@@ -14,4 +14,5 @@
 #### Anschluss am Arduino Mega ATMega2560:
 * Kabel Weiß an **Pin RX2 (17)**
 * Kabel Gelb an **Pin TX2 (16)**
+* Kabel USB mit PC (ROS-Client) verbinden
 * Arduino GND **muss** mit Smartservo MS12A GND verbunden sein!
