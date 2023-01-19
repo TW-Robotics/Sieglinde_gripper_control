@@ -1,0 +1,27 @@
+version: "3.6"
+
+services:
+  master:
+    image: master:latest
+    ports:
+      - 11311:11311
+    command: roscore
+  client:
+    depends_on:
+      - master 
+    image: client:latest
+    tty: true
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
+    command: /bin/bash -c '. /opt/ros/noetic/setup.bash; export ROS_MASTER_URI=http://master:11311/; rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0'
+
+  test:
+    depends_on:
+      - master
+      - client
+    image: test:latest
+    tty: true
+    
+
+
+
