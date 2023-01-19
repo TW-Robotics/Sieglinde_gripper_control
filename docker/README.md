@@ -17,7 +17,7 @@ Alle Docker Container starten mit:
 ```console
 $ docker-compose up
 ```
-
+***
 Danach kann mit:
 
 ```console
@@ -39,5 +39,17 @@ zweite Grundstellung des Greifers (geschlossen)
 ```console
 $ rostopic pub greifen std_msgs/Int16 -- -720
 ```
-
+***
+5.Achse nach rechts drehen:
+```console
+$ rostopic pub drehen std_msgs/Int8 -- 1 
+```
+5.Achse anhalten:
+```console
+$ rostopic pub drehen std_msgs/Int8 -- 0 
+```
+5.Achse nach links drehen:
+```console
+$ rostopic pub drehen std_msgs/Int8 -- -1 
+```
 
