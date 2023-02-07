@@ -17,13 +17,15 @@ Alle Docker Container starten mit:
 ```console
 $ docker-compose up
 ```
+Der Master-Container stellt den ROSCore zur Verfügung. Der Client Container ist für die ROS-Serial Verbindung zum einem Arduino MEGA zuständig. Der Test Container wird ausschließlich für Testzwecke verwendet.
+
 ***
-Danach kann mit:
+Zum Testen des Greifers kann mit:
 
 ```console
 $ docker exec -it "ContainerNummer" bash
 ```
-auf den Test Container zugegriffen werden.
+auf den Test Container zugegriffen werden. Im Test Container muss zuerst der ROS Workspace mit ``` $ source /opt/ros/noetic/setup.bash ``` gesourced werden. Danach muss die ROS_MASTER_URI auf den Master Container mit ```$ export ROS_MASTER_URI=http://master:11311``` gesetzt werden (Bei anderem ROSCore bitte dementsprechend anpassen).
 
 Mit den folgenden Befehlen kann der Greifer sowie die 5-Achse betrieben werden. Der Greifer subscribt das Topic **greifen** und die 5-Achse das Topic **drehen**.
 
