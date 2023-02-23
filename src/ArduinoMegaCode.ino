@@ -20,13 +20,13 @@ void init_cb(const std_msgs::UInt8& msg)
     servo.setZero(msg.data);
 }
 
-void speed1_cb(cont std_msgs::UInt8& msg)
+void speed1_cb(const std_msgs::UInt8& msg)
 {
     //Geschwindigkeit für Motor 1 (Drehachse)
     speed1 = msg.data;  
 }
 
-void speed2_cb(cont std_msgs::UInt8& msg)
+void speed2_cb(const std_msgs::UInt8& msg)
 {
     //Geschwindigkeit für Motor 2 (3-Finger-Greifer)
     speed2 = msg.data;  
