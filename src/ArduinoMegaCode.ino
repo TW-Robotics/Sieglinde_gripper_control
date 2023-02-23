@@ -15,7 +15,8 @@ int speed2 = 25;            //Geschwindigkeit Motor 2 (zwischen 0 und 50)
 
 void init_cb(const std_msgs::UInt8& msg)
 {
-    //Setzen der Nullstellung für den Motor mit der ID (ID 1 = Drehachse; ID 2 = Greifer) 
+    //Setzen der Nullstellung für den Motor mit der ID (ID 1 = Drehachse; ID 2 = Greifer)
+    servo.setBreak(msg.data, 1);
     servo.setZero(msg.data);
 }
 
