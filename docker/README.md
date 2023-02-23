@@ -28,30 +28,51 @@ $ docker exec -it "ContainerNummer" bash
 auf den Test Container zugegriffen werden. Im Test Container muss zuerst der ROS Workspace mit ``` $ source /opt/ros/noetic/setup.bash ``` gesourced werden. Danach muss die ROS_MASTER_URI auf den Master Container mit ```$ export ROS_MASTER_URI=http://master:11311``` gesetzt werden (Bei anderem ROSCore bitte dementsprechend anpassen).
 
 Mit den folgenden Befehlen kann der Greifer sowie die 5-Achse betrieben werden. Der Greifer subscribt das Topic **greifen** und die 5-Achse das Topic **drehen**.
-
+***
+## Greifer
 Grundstellung des Greifers (geschlossen)
 ```console
-$ rostopic pub greifen std_msgs/Int16 -- 0 
+$ rostopic pub greifen std_msgs/Int16 -- 360
 ```
 Gänzlich geöffneter Greifer
 ```console
-$ rostopic pub greifen std_msgs/Int16 -- -360
+$ rostopic pub greifen std_msgs/Int16 -- 0
 ```
 zweite Grundstellung des Greifers (geschlossen)
 ```console
-$ rostopic pub greifen std_msgs/Int16 -- -720
+$ rostopic pub greifen std_msgs/Int16 -- -360
 ```
 ***
-5.Achse nach rechts drehen:
+## Drehachse
+Drehachse nach rechts drehen:
 ```console
 $ rostopic pub drehen std_msgs/Int8 -- 1 
 ```
-5.Achse anhalten:
+Drehachse anhalten:
 ```console
 $ rostopic pub drehen std_msgs/Int8 -- 0 
 ```
-5.Achse nach links drehen:
+Drehachse nach links drehen:
 ```console
 $ rostopic pub drehen std_msgs/Int8 -- -1 
 ```
-
+***
+## Geschwindigkeit
+Geschwindigkeit der Drehachse setzen (zwischen 0 und 50, default: 25):
+```console
+$ rostopic pub setpeed1 std_msgs/UInt8 -- *speed*
+```
+Geschwindigkeit des Greifers setzen (zwischen 0 und 50, default: 25):
+```console
+$ rostopic pub setpeed2 std_msgs/UInt8 -- *speed*
+```
+***
+## Initialisieren
+Initialisieren der Drehachse auf 0 Grad:
+```console
+$ rostopic pub init std_msgs/UInt8 -- 1
+```
+Initialisieren des Greifers auf 0 Grad:
+```console
+$ rostopic pub init std_msgs/UInt8 -- 2
+```
