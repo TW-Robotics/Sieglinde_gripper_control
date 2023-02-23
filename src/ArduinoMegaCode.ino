@@ -12,6 +12,13 @@ int speed1 = 25;            //Geschwindigkeit Motor 1 (zwischen 0 und 50)
 int speed2 = 25;            //Geschwindigkeit Motor 2 (zwischen 0 und 50)
 
 
+
+void init_cb(const std_msgs::UInt8& msg)
+{
+    //Setzen der Nullstellung für den Motor mit der ID (ID 1 = Drehachse; ID 2 = Greifer) 
+    servo.setZero(msg.data);
+}
+
 void speed1_cb(cont std_msgs::UInt8& msg)
 {
     //Geschwindigkeit für Motor 1 (Drehachse)
@@ -59,6 +66,7 @@ ros::Subscriber<std_msgs::Int16> sub("greifen", greifen_cb);
 ros::Subscriber<std_msgs::Int8> sub1("drehen", drehen_cb);
 ros::Subscriber<std_msgs::UInt8> sub2("setspeed1", speed1_cb);
 ros::Subscriber<std_msgs::UInt8> sub3("setspeed2", speed2_cb);
+ros::Subscriber<std_msgs::UInt8> sub4("init", init_cb);
 
 void setup() 
 {
@@ -69,15 +77,16 @@ void setup()
   nh.subscribe(sub1);
   nh.subscribe(sub2);
   nh.subscribe(sub3);
-  delay(500);
+  nh.subscribe(sub4);
+  delay(250);
 
   servo.begin(115200);
-  delay(100);
+  delay(250);
   servo.assignDevIdRequest();
-  delay(100);  //must delay over 50ms
+  delay(250);  //must delay over 50ms
 
-  servo.setInitAngle(1);
-  delay(100);
+  servo.setZero(1);
+  delay(250);
 
 }
 
