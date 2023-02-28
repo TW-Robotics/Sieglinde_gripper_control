@@ -12,8 +12,8 @@ services:
     image: client:latest
     tty: true
     devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
-    command: /bin/bash -c '. /opt/ros/noetic/setup.bash; export ROS_MASTER_URI=http://master:11311/; rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0'
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    command: /bin/bash -c '. /opt/ros/noetic/setup.bash; export ROS_MASTER_URI=http://master:11311/; rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0'
 
   test:
     depends_on:
