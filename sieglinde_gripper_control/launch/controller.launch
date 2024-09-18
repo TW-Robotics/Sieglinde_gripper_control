@@ -1,0 +1,4 @@
+<launch>
+    <!-- Spawn control.cpp node-->
+    <node name="sieglinde_control" pkg="sieglinde_gripper_control" type="control" /> 
+</launch>
