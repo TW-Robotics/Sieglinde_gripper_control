@@ -128,7 +128,7 @@ void setOperationMode()
         }
     else
         {
-          printf("Operating mode changed to current mode. \n");
+          printf("Operating mode of Servo 1 changed to current mode. \n");
         }
     //Servo 2 (Gripper)    
     dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, DXL2_ID, Operation_Mode, position_current_mode, &dxl_error);
@@ -142,7 +142,7 @@ void setOperationMode()
         }
     else
         {
-          printf("Operating mode changed to current mode. \n");
+          printf("Operating mode of Servo 2 changed to positioncurrent mode. \n");
         }
 }
 
@@ -166,7 +166,7 @@ void init()
 
 void setCurrentLimit()
 {
-    int low = 70; // = ungefähr 200mA
+    //int low = 100;  = ungefähr 285mA
     
     dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL1_ID, ADDR_current_limit, 100, &dxl_error);
     if (dxl_comm_result != COMM_SUCCESS) 
