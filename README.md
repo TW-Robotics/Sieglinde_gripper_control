@@ -1,3 +1,5 @@
-# Taurob-3FingerGreifer
+# Taurob-3FingerGreifer (ROS Noetic - Dynamixel)
 
-Github Repository für den Taurob 3Finger Greifer
+This is the Repo for the Taurob Sieglinde 3-Finger-Gripper with Dynamixel Motors
+
+
